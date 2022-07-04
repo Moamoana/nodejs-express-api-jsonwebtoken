@@ -13,7 +13,7 @@ module.exports ={
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM tabel_karyawan;
+                SELECT * FROM inventorytb;
                 `
             , function (error, results) {
                 if(error) throw error;  
@@ -33,7 +33,7 @@ module.exports ={
             if (err) throw err;
             connection.query(
                 `
-                SELECT * FROM tabel_karyawan WHERE karyawan_id = ?;
+                SELECT * FROM inventorytb WHERE id_hp = ?;
                 `
             , [id],
             function (error, results) {
@@ -50,16 +50,16 @@ module.exports ={
     // Simpan data karyawan
     addDataKaryawan(req,res){
         let data = {
-            karyawan_nama : req.body.nama,
-            karyawan_umur : req.body.umur,
-            karyawan_alamat : req.body.alamat,
-            karyawan_jabatan : req.body.jabatan
+            nama_hp : req.body.nama_hp,
+            jenis_hp : req.body.jenis_hp,
+            serial_no : req.body.serial_no,
+            tahun_pro : req.body.tahun_pro
         }
         pool.getConnection(function(err, connection) {
             if (err) throw err;
             connection.query(
                 `
-                INSERT INTO tabel_karyawan SET ?;
+                INSERT INTO inventorytb SET ?;
                 `
             , [data],
             function (error, results) {
@@ -75,17 +75,17 @@ module.exports ={
     // Update data karyawan
     editDataKaryawan(req,res){
         let dataEdit = {
-            karyawan_nama : req.body.nama,
-            karyawan_umur : req.body.umur,
-            karyawan_alamat : req.body.alamat,
-            karyawan_jabatan : req.body.jabatan
+            nama_hp : req.body.nama_hp,
+            jenis_hp : req.body.jenis_hp,
+            serial_no : req.body.serial_no,
+            tahun_pro : req.body.tahun_pro
         }
         let id = req.body.id
         pool.getConnection(function(err, connection) {
             if (err) throw err;
             connection.query(
                 `
-                UPDATE tabel_karyawan SET ? WHERE karyawan_id = ?;
+                UPDATE inventorytb SET ? WHERE id_hp = ?;
                 `
             , [dataEdit, id],
             function (error, results) {
@@ -105,7 +105,7 @@ module.exports ={
             if (err) throw err;
             connection.query(
                 `
-                DELETE FROM tabel_karyawan WHERE karyawan_id = ?;
+                DELETE FROM inventorytb WHERE id_hp = ?;
                 `
             , [id],
             function (error, results) {

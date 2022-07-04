@@ -1,5 +1,5 @@
-const karyawan = require('./controller-karyawan');
+const inventorytb = require('./controller-karyawan');
 
 module.exports ={
-	karyawan
+	inventorytb
 };
