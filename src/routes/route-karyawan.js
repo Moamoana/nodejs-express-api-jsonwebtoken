@@ -29,15 +29,15 @@ function AuthenticateAccessToken(req,res,next){
 router.get('/inventorytb', AuthenticateAccessToken, inventorytb.getDataKaryawan);
 
 // GET localhost:8080/karyawan/2 => Ambil data semua karyawan berdasarkan id = 2
-router.get('/inventorytb/:id', inventorytb.getDataKaryawanByID);
+router.get('/inventorytb/:id', AuthenticateAccessToken, inventorytb.getDataKaryawanByID);
 
 // POST localhost:8080/karyawan/add => Tambah data karyawan ke database
-router.post('/inventorytb/add', inventorytb.addDataKaryawan);
+router.post('/inventorytb/add', AuthenticateAccessToken, inventorytb.addDataKaryawan);
 
 // POST localhost:8080/karyawan/2 => Edit data karyawan
-router.post('/inventorytb/edit', inventorytb.editDataKaryawan);
+router.post('/inventorytb/edit', AuthenticateAccessToken, inventorytb.editDataKaryawan);
 
 // POST localhost:8080/karyawan/delete => Delete data karyawan
-router.post('/inventorytb/delete/', inventorytb.deleteDataKaryawan);
+router.post('/inventorytb/delete/', AuthenticateAccessToken, inventorytb.deleteDataKaryawan);
 
 module.exports = router;
