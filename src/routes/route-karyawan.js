@@ -26,10 +26,10 @@ function AuthenticateAccessToken(req,res,next){
 }
 
 // GET localhost:8080/karyawan => Ambil data semua karyawan
-router.get('/inventorytb', AuthenticateAccessToken, inventorytb.getDataKaryawan);
+router.get('/inventorytb', inventorytb.getDataKaryawan);
 
 // GET localhost:8080/karyawan/2 => Ambil data semua karyawan berdasarkan id = 2
-router.get('/inventorytb/:id', AuthenticateAccessToken, inventorytb.getDataKaryawanByID);
+router.get('/inventorytb/:id', inventorytb.getDataKaryawanByID);
 
 // POST localhost:8080/karyawan/add => Tambah data karyawan ke database
 router.post('/inventorytb/add', AuthenticateAccessToken, inventorytb.addDataKaryawan);
